@@ -4,14 +4,30 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %}{% endblock title %}</title>
+    <title>{% block title %}Yummyjoy{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/style.css' %}"/>
     <script src="main.js"></script>
 </head>
 <body>
+    <header class="wrapper">
+        <h1><a href="{% url 'articles:list' %}"><img src="{% static 'media/img/django.png' %}" alt=""></a></h1>
+   
+        <nav>
+            <ul>
+                <li>
+                    <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </nav> 
+    </header> 
     <div class="wrapper">
-        <h1><a href="{% url 'article:list' %}"><img src="{% static 'media/img/jira.jpg' %}" alt=""></a></h1>
+       
         {% block content %}
         {% endblock %}
     </div>
