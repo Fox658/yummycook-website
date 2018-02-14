@@ -1,0 +1,17 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="{{ leccion.video }}" frameborder="0" class="embed-responsive-item"></iframe>
+    </div> 
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h1>{{ leccion.titulo }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            {{ leccion.contenido }}
+        </div>
+    </div>
+{% endblock %}

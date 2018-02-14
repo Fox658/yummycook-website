@@ -1,11 +1,9 @@
-from django.http import HttpResponse
 from django.shortcuts import render 
-
+from tutoriales.models import SerieTutoriales
 
 def homepage(request):
-    #return HttpResponse('homepage')
-    return render(request,'homepage.html')
+    series = SerieTutoriales.objects.all()
+    return render(request,'homepage.html', {'series':series})
     
 def about(request):
-    #return HttpResponse('about')
     return render(request,'about.html')

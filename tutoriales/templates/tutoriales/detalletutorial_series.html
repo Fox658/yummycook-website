@@ -1,0 +1,30 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+   <!-- Main jumbotron for a primary marketing message or call to action -->
+   <div class="jumbotron">
+        <div class="container">
+          <h1>{{ series.nombre }}</h1>
+          <p>{{ series.descripcion }}</p>
+          <p>Nivel de experiencia: {{ series.experiencia_estudiante }}</p>
+          <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
+        </div>
+      </div>
+      <div class="container">
+        <ul class="list-group">
+        {% for leccion in lecciones %}
+          {% if leccion.free_preview or user.is_authenticated %}
+            <li class="list-group-item">
+              <span class="badge">{{leccion.length}}</span>    
+              <a href="{% url 'detalle_leccion' leccion.serie_tutoriales.slug leccion.slug %}">{{leccion.titulo}}</a>
+            </li>
+          {% else %}
+            <li class="list-group-item">
+              <span class="badge">{{leccion.length}}</span>    
+              {{leccion.titulo}}
+            </li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

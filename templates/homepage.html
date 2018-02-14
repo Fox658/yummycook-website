@@ -1,15 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
-    <h1>Esta es mi home en Django</h1>
-    <p>Esta es una prueba en Django</p>
-</body>
-</html>
+{% extends 'base_layout.html' %}
+{% block content %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron" style="background-image: url('media/img/lovesnails.jpg')">
+      <div class="container">
+        <h1 style="color:#fff;">Bienvenidos al Blog de YummyJoy!</h1>
+        <p style="color:#fff;">Esta es una pagina dedicada al recestas de comida de todo tipo en donde podras conocer recetas nuevas en mis secciones de Post y Tutoriales!!</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        {% for item in series %}
+        <div class="col-md-4 text-center">
+          <h2>{{item.nombre}}</h2>
+          <p>{{item.descripcion|truncatechars:140}}</p>
+          <p><a class="btn btn-default" href="{% url "detalle_tutorial_series" item.slug %}" role="button">Ver Detalles &raquo;</a></p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+{% endblock %}

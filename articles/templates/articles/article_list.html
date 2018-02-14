@@ -2,16 +2,19 @@
 {% block title %}
 Articles
 {% endblock title %}
+
 {% block content %}
-<h1>Article list</h1>
-    <div class="articles">
-        {% for item in articles %}
-            <div class="article">
+    <div class="jumbotron container">
+        <h1 class="text-center">Article list</h1>
+        {% for item in items %}
+            {% if forloop.counter %}
                 <h2><a href="{% url 'articles:detail' slug=item.slug %}">{{item.title}}</a></h2>
-                <p>by {{item.author}}</p>
+                <p>by {{item.author.username}}</p>
                 <p>{{item.snippet}}</p>
                 <p>{{item.date}}</p>
-            </div>
+            {% endif %}
         {% endfor %}
+        {% include "paginacion.html" %}
     </div>
-{% endblock content %}
+    
+{% endblock %}
