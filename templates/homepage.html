@@ -1,11 +1,13 @@
 {% extends 'base_layout.html' %}
 {% block content %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" style="background-image: url('media/img/lovesnails.jpg')">
-      <div class="container">
-        <h1 style="color:#fff;">Bienvenidos al Blog de YummyJoy!</h1>
-        <p style="color:#fff;">Esta es una pagina dedicada al recestas de comida de todo tipo en donde podras conocer recetas nuevas en mis secciones de Post y Tutoriales!!</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+    <div style="height: 70%;">
+    <div style="background-image: url('media/img/thumb-1920-653606.jpg'); height: 80%;">
+        <div class="container">
+          <h1 style="color:#fff;">Bienvenidos al Blog de YummyJoy!</h1>
+          <p style="color:#fff;">Esta es una pagina dedicada al recestas de comida de todo tipo en donde podras conocer recetas nuevas en mis secciones de Post y Tutoriales!!</p>
+          <p><a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">Mas sobre el tema &raquo;</a></p>
+        </div>
       </div>
     </div>
     <div class="container">

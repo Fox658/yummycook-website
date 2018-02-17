@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 from .models import SerieTutoriales, Leccion
@@ -53,4 +53,35 @@ def detalle_leccion(request, serie_tutoriales, slug):
     context = {
         'leccion': leccion,
     }
+    return render(request,template,context)
+
+def buscar_tutorial(request):
+    template = 'tutoriales/serietutoriales_list.html'
+
+    query = request.GET.get('h')
+
+    results = SerieTutoriales.objects.filter(Q(nombre__icontains=query) | Q(descripcion__icontains=query))
+
+    paginator= Paginator(results, 10)
+    page = request.GET.get('page')
+
+    try:
+        items = paginator.page(page)
+    except PageNotAnInteger:
+        items = paginator.page(1)
+    except EmptyPage:
+        items = paginator.page(paginator.num_pages)
+        
+    index = items.number - 1
+    max_index = len(paginator.page_range)
+    start_index = index - 5 if index >= 5 else 0
+    end_index = index + 5 if index <= max_index -5 else max_index
+    page_range = paginator.page_range[start_index:end_index] 
+    
+    template = "tutoriales/serietutoriales_list.html"
+    context = {
+        'items': results,
+        'page_range':page_range,
+    }
+
     return render(request,template,context)

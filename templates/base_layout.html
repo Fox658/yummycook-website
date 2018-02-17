@@ -53,52 +53,44 @@
             {% endwith %}
           </ul>
           <ul>
+          <div class="nav navbar-nav navbar-right">
             {%if  user.is_authenticated %}
                 {% if user.is_staff %}
-                  <div class="nav navbar-nav navbar-right">
                     <li>
                       <div>
                         <div class="form-group navbar-form">
-                          <a href="{% url 'articles:create' %}"><button class="btn btn-warning">Post</button> </a>
+                          <a href="{% url 'articles:create' %}"><button class="btn btn-default">Post</button> </a>
                         </div>
                       </div>
                     </li>
                     <li>
-                      <form action="{% url 'accounts:logout' %}" method="post">
-                        <div class="form-group navbar-form">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-info">Log Out</button>  
-                        </div>
-                      </form>
+                      <form action="{% url 'accounts:logout' %}" method="post" class="form-group navbar-form">
+                          {% csrf_token %}
+                          <button type="submit" class="btn btn-info">Log Out</button> 
+                      </form> 
                     </li>
-                  </div>
                 {% else %}
                   <li>
-                      <form class= "navbar-form navbar-right" action="{% url 'accounts:logout' %}" method="post">
+                    <form class= "navbar-form navbar-right" action="{% url 'accounts:logout' %}" method="post">
                         <div class="form-group">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-info">Log Out</button>  
                         </div>
-                      </form>
+                    </form>
                   </li>
                 {% endif %}
             {% else %}
-              <div class="nav navbar-nav navbar-right">
               <li>
-                <div>
-                  <div class="form-group navbar-form">
-                    <a href="{% url 'accounts:login' %}"><button class="btn btn-success">Log In</button> </a>
-                  </div>
+                <div class="form-group navbar-form">
+                  <a href="{% url 'accounts:login' %}"><button class="btn btn-success">Log In</button> </a>
                 </div>
               </li>
               <li>
-                <div>
-                  <div class="form-group navbar-form">
-                    <a href="{% url 'accounts:signup' %}"><button class="btn btn-default">Sign Up</button> </a>
-                  </div>
+                <div class="form-group navbar-form">
+                  <a href="{% url 'accounts:signup' %}"><button class="btn btn-default">Sign Up</button> </a>
                 </div>
               </li>
-              </div>
+          </div>
           {% endif %}
           </ul>
         </div><!--/.navbar-collapse -->
