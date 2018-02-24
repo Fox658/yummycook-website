@@ -9,7 +9,7 @@ def serie_tutoriales_list(request):
         'tutoriales'
         ).annotate(
             leccion=Count('tutoriales')
-        )
+        ).order_by('nombre')
     paginator= Paginator(tutoriales, 2)
     page = request.GET.get('page')
 

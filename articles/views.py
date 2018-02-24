@@ -7,7 +7,7 @@ from . import forms
 
 # Create your views here.
 def article_list(request):
-    articles = Article.objects.all().order_by('date')
+    articles = Article.objects.all().order_by('-date')
     paginator= Paginator(articles, 10)
     page = request.GET.get('page')
 
@@ -54,7 +54,7 @@ def buscar(request):
 
     query = request.GET.get('q')
 
-    results = Article.objects.filter(Q(title__icontains=query) | Q(body__icontains=query))
+    results = Article.objects.filter(Q(title__icontains=query) | Q(body__icontains=query)).order_by('-date')
 
     paginator= Paginator(results, 10)
     page = request.GET.get('page')

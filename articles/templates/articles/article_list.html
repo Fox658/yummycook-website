@@ -8,7 +8,7 @@ Articles
         <h1 class="text-center">Lista de Post</h1>
         <form action="{% url 'articles:buscar' %}">
             {% csrf_token %}
-            <input name="q" value="{{request.GET.q}}" placeholder="search..">
+            <input name="q" value="{{request.GET.q}}" placeholder="buscar..">
             <button class="btn btn-default" type="submit">
                 Buscar
             </button>

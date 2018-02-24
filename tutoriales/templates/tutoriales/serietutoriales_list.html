@@ -5,7 +5,7 @@
 <div class="container">
     <form action="{% url 'buscar_tutorial' %}">
         {% csrf_token %}
-        <input name="h" value="{{request.GET.h}}" placeholder="search..">
+        <input name="h" value="{{request.GET.h}}" placeholder="buscar..">
         <button class="btn btn-default" type="submit">
             Buscar
         </button>
@@ -25,7 +25,6 @@
         </div>
     </div>
 {% else %}
-
     <div class="row featurette">
         <div class="col-md-7 col-md-push-5">
         <h2 class="featurette-heading"><a href="{% url 'detalle_tutorial_series' item.slug %}"> {{item.nombre}} </a><span class="text-muted">{{item.leccion}} Tutoriales</span></h2>
@@ -38,7 +37,6 @@
             </div>        
         </div>
     </div>
-
 {% endif %}
 {% endfor %}
 {% include "paginacion.html" %}
