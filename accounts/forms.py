@@ -8,4 +8,4 @@ class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Se requiere una direccion de correo valida.')
     class Meta:
         model = User
-        fields = ('username','first_name','last_name','password1','password2',)
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
