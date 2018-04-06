@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'articles',
     'accounts',
     'tutoriales',
+    'chatrooms',
 ]
 
 MIDDLEWARE = [
