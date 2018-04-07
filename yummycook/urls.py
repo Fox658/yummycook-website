@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^articles/', include('articles.urls')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^tutoriales/', include('tutoriales.urls')),
+    url(r'^chatrooms/',include('chatrooms.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
