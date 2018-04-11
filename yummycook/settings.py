@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'chatdemo.apps.ChatdemoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,12 @@ INSTALLED_APPS = [
     'articles',
     'accounts',
     'tutoriales',
+    'widget_tweaks',
+    'channels',
+    'channels_presence',
+    'celery',
+    'django_celery_beat',
+
 ]
 
 MIDDLEWARE = [
@@ -128,3 +135,27 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'postmarker.django.EmailBackend'
+
+POSTMARK = {
+    'TOKEN': 'dfb%$^h2_&oue@3w-p60bq3fvxku7@3w3cj&gmsv(1#9r-=1dk',
+    'TEST_MODE': False,
+}
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "chatdemo.routing.channel_routing",
+    },
+}
