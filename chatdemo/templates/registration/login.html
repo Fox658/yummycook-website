@@ -1,4 +1,4 @@
-{% extends "registration/base.html" %}
+{% extends "base_layout.html" %}
 
 {% load widget_tweaks %}
 
@@ -20,7 +20,7 @@
                 {{ form.username |attr:"placeholder:Username" |add_class:"form-control" }}
 
                 <label for="{{ form.password.id_for_label }}" class="sr-only">Password</label> 
-                {{ form.password | attr:"placeholder:Password" |add_class:"form-control" }}
+                {{ form.password |attr:"placeholder:Password" |add_class:"form-control" }}
 
                 <button class="btn btn-primary btn-block" type="submit">Login</button>
                 <input type="hidden" name="next" value="{{ next }}" />

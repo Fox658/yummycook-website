@@ -5,8 +5,8 @@
 <div class="container">
     <form action="{% url 'buscar_tutorial' %}">
         {% csrf_token %}
-        <input name="h" value="{{request.GET.h}}" placeholder="buscar..">
-        <button class="btn btn-default" type="submit">
+        <input name="h" value="{{request.GET.h}}" class="form-control input-lg" placeholder="buscar..">
+        <button class="btn btn-primary input-lg" type="submit">
             Buscar
         </button>
     </form>

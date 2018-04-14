@@ -1,8 +1,8 @@
-{% extends "registration/base.html" %} 
+{% extends "base_layout.html" %} 
 
 {% load static %}
 
-{% block title %}Django Chat{% endblock %}
+{% block title %}Yummyjoy's Chat{% endblock %}
 
 {% block content %}
 
@@ -16,10 +16,10 @@
     <div class="row">
 
             <div class="col-xs-3 col-sm-2  col-sm-offset-1 pre-scrollable">
-                <em><span class="text-success" id="loggedin-users-count">0</span> users online and <span class="text-success" id="lurkers-count">0</span> onlookers</em>
+                <em><span class="text-success" id="loggedin-users-count">0</span> usuarios enlineas y <span class="text-success" id="lurkers-count">0</span> espectadores</em>
 
                 <ul class="list-group" id="user-list">
-                    <li class="list-group-item">user1</li>
+                    <li class="list-group-item">usuario1</li>
                 </ul>
 
             </div>
@@ -27,7 +27,7 @@
             <div class="col-xs-9 col-sm-8 text-left pre-scrollable" id="all_messages">
                 <div class="hidden" id="last_message_id">{{ first_message_id }}</div>
                     {% if first_message_id > 0 %}
-                        <div class="text-center"><button id="load_old_messages" class="btn btn-success">Load old messages</button></div>
+                        <div class="text-center"><button id="load_old_messages" class="btn btn-success">Carga mensajes viejos.</button></div>
                     {% endif %}
                 <ul class="list-group" id="chat">
                     
@@ -37,7 +37,7 @@
                         {{ message.message_html|safe }} 
                         </li>
                     {% empty %}
-                    <div id="no_messages">No messages here</div>
+                    <div id="no_messages">No hay mensajes aqui.</div>
                     {% endfor %}
                 </ul>
             </div>
@@ -49,9 +49,9 @@
             <form id="chatform" autocomplete="off">
                 <div class="col-xs-9 col-sm-7 col-sm-offset-3">
                     {% if user.is_authenticated %}
-                    <input id="message" type="text" class="form-control input-lg" placeholder="Type chat message here" required>
+                    <input id="message" type="text" class="form-control input-lg" placeholder="Escribe un mensaje aqui" required>
                     {% else %}
-                    <input class="form-control  input-lg" id="disabledInput" type="text" placeholder="Please login to chat" disabled>
+                    <input class="form-control  input-lg" id="disabledInput" type="text" placeholder="Por favor loggese al chat" disabled>
                     {% endif %}
                 </div>
                 <div class="col-xs-2 col-sm-1">

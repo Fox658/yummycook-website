@@ -50,6 +50,9 @@
               <li class="{% if url_name == 'home' %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
               <li class="{% if url_name == 'serie_tutoriales_list_view' %}active{% endif %}"><a href="{% url 'serie_tutoriales_list_view' %}">Tutoriales</a></li>
               <li class="{% if url_name == 'list' %}active{% endif %}"><a href="{% url 'articles:list' %}">Blog</a></li>
+              {%if  user.is_authenticated %}
+              <li class="{% if url_name == 'home_page' %}active{% endif %}"><a href="{% url 'chatdemo:home_page' %}">Chat</a></li>
+              {%endif%}
             {% endwith %}
           </ul>
           <ul>
@@ -62,11 +65,16 @@
                       </div>
                     </li>
                     <li>
+                      <form action="{% url 'chatdemo:profile' %}" class="form-group navbar-form">
+                          <button type="submit" class="btn btn-info">Perfil</button> 
+                      </form> 
+                    </li>
+                    <li>
                       <form action="{% url 'accounts:logout' %}" method="post" class="form-group navbar-form">
                           {% csrf_token %}
                           <button type="submit" class="btn btn-info">Log Out</button> 
                       </form> 
-                    </li>
+                    </li> 
                 {% else %}
                   <li>
                     <form class= "navbar-form navbar-right" action="{% url 'accounts:logout' %}" method="post">
@@ -94,7 +102,7 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-    <div class="jumbotron">
+    <div class="jumbotron" style="padding: 0%;" >
     {% block content %} 
 
     {% endblock %}
@@ -115,6 +123,7 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+    {% block extra_scripts %}{% endblock %}
   </body>
 </html>
 

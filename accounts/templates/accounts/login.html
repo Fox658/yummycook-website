@@ -1,11 +1,34 @@
 {% extends "base_layout.html" %}
+{% load widget_tweaks %}
 {% block content %}
-    <form class="site-form" action="{% url 'accounts:login' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        {% if request.GET.next %}
+    <div class="container-fluid">
+        {% include "chatdemo/errors_and_messages.html" %}
+        <div class="row">
+        <form class="site-form col-md-4 col-md-offset-4" action="{% url 'accounts:login' %}" method="post">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">Login</h2>
+
+            <label for="{{ form.username.id_for_label }}" class="sr-only">Username</label> 
+            {{ form.username |attr:"placeholder:Username" |add_class:"form-control" }}
+
+            <label for="{{ form.password.id_for_label }}" class="sr-only">Password</label> 
+            {{ form.password | attr:"placeholder:Password" |add_class:"form-control" }}
+
+            <button class="btn btn-primary btn-block" type="submit">Login</button>
+            {% if request.GET.next %}
             <input type="hidden" name="next" value="{{request.GET.next}}">
-        {% endif %}   
-        <input type="submit" value="Login">  
-    </form>
+            {% endif %}  
+        </form>
+        </div>
+      <br />
+        <div class="row">
+            <p>No tienes cuenta? <a href="{% url 'accounts:signup' %}">Inscribase</a>
+            </p>
+        </div>
+        <div class="row">
+            <p>Olvido su clave? <a href="{% url 'chatdemo:password_reset' %}">Resete la clave</a>
+            </p>
+        </div>
+    </div>      
+    
 {% endblock %}
