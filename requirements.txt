@@ -54,9 +54,7 @@ pyasn1-modules==0.2.1
 pycparser==2.18
 pylint==1.8.2
 pyOpenSSL==17.5.0
-pypiwin32==223
 pytz==2017.2
-pywin32==223
 redis==2.10.5
 requests==2.17.3
 selenium==3.11.0
