@@ -1,1 +1,1 @@
-web: gunicorn yummycook.wsgi --log-file=-
+web: waitress-serve --port=$PORT yummycook.wsgi:application
