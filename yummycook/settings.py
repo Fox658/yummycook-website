@@ -84,13 +84,6 @@ WSGI_APPLICATION = 'yummycook.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': dj_database_url.config()
 }
@@ -135,7 +128,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fast-citadel-12918.herokuapp.com']
 
 STATIC_URL = '/static/'
 
