@@ -32,7 +32,7 @@ class IndexView(generic.View):
                 previous_id = -1
         chat_messages = reversed(chat_queryset)
         
-        return render(request, "chatdemo/templates/chatdemo/chatroom.html", {
+        return render(request, "chatdemo/chatroom.html", {
             'chat_messages': chat_messages,
             'first_message_id' : previous_id,
         })
@@ -46,7 +46,7 @@ class LogoutView(LoginRequiredMixin, View):
 
 class RegisterView(View):
     form_class  = RegisterForm
-    template_name = 'chatdemo/templates/registration/register.html'
+    template_name = 'registration/register.html'
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
@@ -84,7 +84,7 @@ class RegisterView(View):
 class ProfileView(LoginRequiredMixin, View):
     login_url = '/user/login/'
     form_class = ProfileForm
-    template_name = 'chatdemo/templates/registration/profile.html'
+    template_name = 'registration/profile.html'
 
     def get(self, request, *args, **kwargs):
         data = {}
