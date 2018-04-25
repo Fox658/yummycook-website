@@ -1,1 +1,1 @@
-web: gunicorn app: yummycook.wsgi --log-file
+web: gunicorn yummycook.wsgi --log-file
