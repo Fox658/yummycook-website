@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT yummycook.wsgi:application=-
+web: waitress-serve --port=$PORT yummycook.wsgi:application
