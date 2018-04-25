@@ -1,13 +1,13 @@
 {% extends 'base_layout.html' %}
 {% block title %}
-Article
+Articulo
 {% endblock title %}
 {% block content %}
+<img src="{{ article.thumb.url }}" style="max-width: 120%; width: 100%; "/>
 <div class="container">
     <div class="article">
-        <img src="{{ article.thumb.url }}"/>
         <h2>{{article.title}}</h2>
-        <p>{{article.body}}</p>
+        <p class="container">{{article.body}}</p>
         <p>{{article.date}}</p>
     </div>
 </div>

@@ -1,44 +1,49 @@
 {% extends "base_layout.html" %}
+{% load widget_tweaks %}
+
 {% block title %}
-Sign up
+Subscripcion
 {% endblock title %}
 {% block content %}
-    <h2 class="text-center">Sign up</h2>
-    <form method="post" class="jumbotron container">
+    <div class="jumbotron container" style="padding:0%;">
+    <h2 class="text-center">Subscribase!</h2>
+    <form method="post" >
         {% csrf_token %}
         {% for field in form %}
         <p>{% if field.name == 'first_name'%}
                 <label for="id_first_name">Nombre:</label><br>
                 {{ field }}
                 {% if field.help_text %}
-                    <small style="color: grey">{{ field.help_text }}</small>
+                    <small style="color: grey">{{ field.help_text|safe }}</small>
                 {% endif %}
                 {% for error in field.errors %}
-                    <p style="color: red">{{ error }}</p>
+                    <p style="color: red">{{ error|safe }}</p>
                 {% endfor %}
             {% elif field.name == 'last_name' %}
                 <label for="id_last_name">Apellidos:</label><br>
                 {{ field }}
                 {% if field.help_text %}
-                    <small style="color: grey">{{ field.help_text }}</small>
+                    <small style="color: grey">{{ field.help_text|safe }}</small>
                 {% endif %}
                 {% for error in field.errors %}
-                    <p style="color: red">{{ error }}</p>
+                    <p style="color: red">{{ error|safe }}</p>
                 {% endfor %}
             {% else %}
                 {{ field.label_tag }} <br>
                 {{ field }}
                 {% if field.help_text %}
-                    <small style="color: grey">{{ field.help_text }}</small>
+                    <small class="col" style="color: grey">{{ field.help_text|safe }}</small>
                 {% endif %}
                 {% for error in field.errors %}
-                    <p style="color: red">{{ error }}</p>
+                    <p style="color: red">{{ error|safe }}</p>
                 {% endfor %}
             {% endif %}
         </p>
         {% endfor %}
-        <button type="submit">Aceptar</button>
+        
+        <button class="btn btn-primary" type="submit">Aceptar</button>
     </form>
+    </div>
 {% endblock %}
 
 

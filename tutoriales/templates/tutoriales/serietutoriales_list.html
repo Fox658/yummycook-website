@@ -1,8 +1,9 @@
 {% extends 'base_layout.html' %}
 
-{% block content %} 
+{% block content %}
+<div class="jumbotron container" style="padding: 0%;"> 
 <h1 class="text-center">Tutoriales</h1>
-<div class="container">
+
     <form action="{% url 'buscar_tutorial' %}">
         {% csrf_token %}
         <input name="h" value="{{request.GET.h}}" class="form-control input-lg" placeholder="buscar..">
@@ -39,6 +40,6 @@
     </div>
 {% endif %}
 {% endfor %}
-{% include "paginacion.html" %}
+{% include "paginacion.html" %} 
 </div>
 {% endblock %}
