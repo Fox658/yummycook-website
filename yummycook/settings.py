@@ -132,9 +132,9 @@ ALLOWED_HOSTS = ['fast-citadel-12918.herokuapp.com']
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'statics'),
-]
+)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/statics/media/'
