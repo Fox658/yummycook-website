@@ -50,20 +50,20 @@
               <li class="{% if url_name == 'home' %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
               <li class="{% if url_name == 'serie_tutoriales_list_view' %}active{% endif %}"><a href="{% url 'serie_tutoriales_list_view' %}">Tutoriales</a></li>
               <li class="{% if url_name == 'list' %}active{% endif %}"><a href="{% url 'articles:list' %}">Blog</a></li>
-              {%if  user.is_authenticated %}
               <li class="{% if url_name == 'home_page' %}active{% endif %}"><a href="{% url 'chatdemo:home_page' %}">Chat</a></li>
-              {%endif%}
             {% endwith %}
           </ul>
           <ul>
           <div class="nav navbar-nav navbar-right">
             {%if  user.is_authenticated %}
                 {% if user.is_staff %}
+                    {% if user.is_superuser %}
                     <li>
                       <div class="form-group navbar-form">
                         <a href="{% url 'articles:create' %}"><button class="btn btn-default">Post</button> </a>
                       </div>
                     </li>
+                    {%endif%}
                     <li>
                       <form action="{% url 'chatdemo:profile' %}" class="form-group navbar-form">
                           <button type="submit" class="btn btn-info">Perfil</button> 
@@ -118,8 +118,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script>window.jQuery || document.write('<script src="{% static "js/jquery.min.js"%}"><\/script>')</script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>

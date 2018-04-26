@@ -17,28 +17,29 @@
 
             <div class="col-xs-3 col-sm-2  col-sm-offset-1 pre-scrollable">
                 <em><span class="text-success" id="loggedin-users-count">0</span> usuarios enlineas y <span class="text-success" id="lurkers-count">0</span> espectadores</em>
-
                 <ul class="list-group" id="user-list">
                     <li class="list-group-item">usuario1</li>
                 </ul>
-
             </div>
-
+            
             <div class="col-xs-9 col-sm-8 text-left pre-scrollable" id="all_messages">
-                <div class="hidden" id="last_message_id">{{ first_message_id }}</div>
+                <div class="hidden" id="last_message_id">{{ first_message_id }}</div> 
+                {% if user.is_staff %}
                     {% if first_message_id > 0 %}
                         <div class="text-center"><button id="load_old_messages" class="btn btn-success">Carga mensajes viejos.</button></div>
                     {% endif %}
                 <ul class="list-group" id="chat">
-                    
-                    {% for message in chat_messages %}
-                        <li class="list-group-item">
-                        <strong>{{ message.user }} : </strong>
-                        {{ message.message_html|safe }} 
-                        </li>
-                    {% empty %}
-                    <div id="no_messages">No hay mensajes aqui.</div>
-                    {% endfor %}
+                        {% for message in chat_messages %}
+                            <li class="list-group-item">
+                            <strong>{{ message.user }} : </strong>
+                            {{ message.message_html|safe }} 
+                            </li>
+                        {% empty %}
+                        <div id="no_messages">No hay mensajes aqui.</div>
+                        {% endfor %}
+                {% else %}
+                        <li class= "list-group-item">Tienes que ser aceptado por la administracion via este correo: www.yummyjoy.555@gmail.com</li>
+                {% endif %}    
                 </ul>
             </div>
         </div>
@@ -48,7 +49,7 @@
         <div class="row">
             <form id="chatform" autocomplete="off">
                 <div class="col-xs-9 col-sm-7 col-sm-offset-3">
-                    {% if user.is_authenticated %}
+                    {% if user.is_staff %}
                     <input id="message" type="text" class="form-control input-lg" placeholder="Escribe un mensaje aqui" required>
                     {% else %}
                     <input class="form-control  input-lg" id="disabledInput" type="text" placeholder="Por favor loggese al chat" disabled>
@@ -69,8 +70,8 @@
 
 {% block extra_scripts %}
 
-<script type="text/javascript" src='{% static "chatdemo/reconnecting-websocket.min.js" %}'></script>
-<script type="text/javascript" src='{% static "chatdemo/realtime.js" %}'></script>
-<script type="text/javascript" src='{% static "chatdemo/loadhistory.js" %}'></script>
+<script type="text/javascript" src='{% static "js/chatdemo/reconnecting-websocket.min.js" %}'></script>
+<script type="text/javascript" src='{% static "js/chatdemo/realtime.js" %}'></script>
+<script type="text/javascript" src='{% static "js/chatdemo/loadhistory.js" %}'></script>
 
 {% endblock %}
