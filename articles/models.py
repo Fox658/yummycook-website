@@ -10,15 +10,7 @@ class Article(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     thumb = models.ImageField(default='default.png', blank=True)
     author = models.ForeignKey(User,on_delete=models.CASCADE, default=None)
-    @property
-    def value(self):
-        return title
-        return slug
-        return body
-        return date
-        return thumb
-        if User.is_superuser:
-            return self.author
+
         
     def save(self, *args,**kwargs):
         self.slug =slugify(self.title)
