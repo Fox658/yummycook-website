@@ -8,7 +8,7 @@ class CaseInsensitiveUserCreationForm(UserCreationForm):
         cleaned_data = super(CaseInsensitiveUserCreationForm, self).clean()
         username = cleaned_data.get('username')
         if username and User.objects.filter(username__iexact=username).exists():
-            self.add_error('username', 'hay un usuario con ese nombre.')
+            self.add_error('username', 'Hay un usuario con ese nombre, por favor use otro .')
         return cleaned_data
 
 class SignUpForm(UserCreationForm):
