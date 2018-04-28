@@ -57,13 +57,12 @@
           <div class="nav navbar-nav navbar-right">
             {%if  user.is_authenticated %}
                 {% if user.is_staff %}
-                    {% if user.is_superuser %}
+                    
                     <li>
                       <div class="form-group navbar-form">
                         <a href="{% url 'articles:create' %}"><button class="btn btn-default">Post</button> </a>
                       </div>
                     </li>
-                    {%endif%}
                     <li>
                       <form action="{% url 'chatdemo:profile' %}" class="form-group navbar-form">
                           <button type="submit" class="btn btn-info">Perfil</button> 
