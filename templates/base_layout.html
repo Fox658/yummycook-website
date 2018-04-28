@@ -57,17 +57,16 @@
           <div class="nav navbar-nav navbar-right">
             {%if  user.is_authenticated %}
                 {% if user.is_staff %}
-                    
                     <li>
                       <div class="form-group navbar-form">
                         <a href="{% url 'articles:create' %}"><button class="btn btn-default">Post</button> </a>
                       </div>
                     </li>
                     <li>
-                      <form action="{% url 'chatdemo:profile' %}" class="form-group navbar-form">
-                          <button type="submit" class="btn btn-info">Perfil</button> 
-                      </form> 
-                    </li>
+                        <form action="{% url 'chatdemo:profile' %}" class="form-group navbar-form">
+                            <button type="submit" class="btn btn-info">Perfil</button> 
+                        </form> 
+                      </li>
                     <li>
                       <form action="{% url 'accounts:logout' %}" method="post" class="form-group navbar-form">
                           {% csrf_token %}
@@ -75,6 +74,11 @@
                       </form> 
                     </li> 
                 {% else %}
+                <li>
+                    <form action="{% url 'chatdemo:profile' %}" class="form-group navbar-form">
+                        <button type="submit" class="btn btn-info">Perfil</button> 
+                    </form> 
+                  </li>
                   <li>
                     <form class= "navbar-form navbar-right" action="{% url 'accounts:logout' %}" method="post">
                         <div class="form-group">

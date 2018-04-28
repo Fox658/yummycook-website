@@ -161,7 +161,7 @@ CHANNEL_LAYERS = {
         "ROUTING": "chatdemo.routing.channel_routing",
     },
 }
-AUTHENTICATION_BACKENDS =('yummycook.core.backends.CaseInsensitiveModelBackend',)
+AUTHENTICATION_BACKENDS =('accounts.backends.CaseInsensitiveModelBackend',)
 try: 
     from .local_settings import *
 except ImportError:

@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .forms import SignUpForm
+from .forms import SignUpForm, CaseInsensitiveUserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
 # Create your views here.
 def signup_view(request):
     if request.method == 'POST':
             form = SignUpForm(request.POST)
-            if form.is_valid():
+            check_form_cases = CaseInsensitiveUserCreationForm(request.POST)
+            if form.is_valid() and check_form_cases.is_valid():
                 username =  form.cleaned_data.get('username')
                 raw_password = form.cleaned_data.get('password1')
                 user = authenticate(username=username,password=raw_password)

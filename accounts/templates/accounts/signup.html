@@ -8,9 +8,14 @@ Subscripcion
     <div class="jumbotron container" style="padding:0%;">
     <h2 class="text-center">Subscribase!</h2>
     <form method="post" >
+        {% for field in form %} 
         {% csrf_token %}
-        {% for field in form %}
-        <p>{% if field.name == 'first_name'%}
+        <p>{%if field.name == 'username' %}
+                {%for error in field.errors%}
+                    <p style="color: red">{{ error|safe }}</p>
+                {%endfor%}
+            {%endif%}
+            {% if field.name == 'first_name'%}
                 <label for="id_first_name">Nombre:</label><br>
                 {{ field }}
                 {% if field.help_text %}
