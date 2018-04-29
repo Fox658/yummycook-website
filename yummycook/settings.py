@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Apps de usuarios.
     'articles',
-    'accounts',
+    'authtools',
     'tutoriales',
     'widget_tweaks',
     'channels',
@@ -161,7 +161,6 @@ CHANNEL_LAYERS = {
         "ROUTING": "chatdemo.routing.channel_routing",
     },
 }
-AUTHENTICATION_BACKENDS =('accounts.backends.CaseInsensitiveModelBackend',)
 try: 
     from .local_settings import *
 except ImportError:

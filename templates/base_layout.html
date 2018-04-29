@@ -58,17 +58,12 @@
             {%if  user.is_authenticated %}
                 {% if user.is_staff %}
                     <li>
-                      <div class="form-group navbar-form">
-                        <a href="{% url 'articles:create' %}"><button class="btn btn-default">Post</button> </a>
-                      </div>
-                    </li>
-                    <li>
                         <form action="{% url 'chatdemo:profile' %}" class="form-group navbar-form">
                             <button type="submit" class="btn btn-info">Perfil</button> 
                         </form> 
                       </li>
                     <li>
-                      <form action="{% url 'accounts:logout' %}" method="post" class="form-group navbar-form">
+                      <form action="{% url 'logout'%}" method="post" class="form-group navbar-form">
                           {% csrf_token %}
                           <button type="submit" class="btn btn-info">Log Out</button> 
                       </form> 
@@ -80,7 +75,7 @@
                     </form> 
                   </li>
                   <li>
-                    <form class= "navbar-form navbar-right" action="{% url 'accounts:logout' %}" method="post">
+                    <form class= "navbar-form navbar-right" action="{% url 'logout'%}" method="post">
                         <div class="form-group">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-info">Log Out</button>  
@@ -91,12 +86,12 @@
             {% else %}
               <li>
                 <div class="form-group navbar-form">
-                  <a href="{% url 'accounts:login' %}"><button class="btn btn-success">Log In</button> </a>
+                  <a href="{% url 'login'%}"><button class="btn btn-success">Log In</button> </a>
                 </div>
               </li>
               <li>
                 <div class="form-group navbar-form">
-                  <a href="{% url 'accounts:signup' %}"><button class="btn btn-default">Sign Up</button> </a>
+                  <a href="#"><button class="btn btn-default">Sign Up</button> </a>
                 </div>
               </li>
           </div>
@@ -122,8 +117,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script>window.jQuery || document.write('<script src="{% static "js/jquery.min.js"%}"><\/script>')</script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
     {% block extra_scripts %}{% endblock %}
