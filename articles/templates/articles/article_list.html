@@ -28,9 +28,9 @@ Articles
                             </a>
                         </div>
                         <div class="col-md-5">
-                            <h3>{{item.title}}</h3>
+                            <h3><b>{{item.title}}</b></h3>
                             <p>{{item.snippet}}</p>
-                            <p>by {{item.author.username}}, {{item.date}}</p>
+                            <footer>by {{item.author.username}}, {{item.date}}</footer>
                             <a class="btn btn-primary" href="{% url 'articles:detail' slug=item.slug %}">Ver Post</a>
                         </div>
                     </div>  
