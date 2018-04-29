@@ -3,13 +3,15 @@
 Articulo
 {% endblock title %}
 {% block content %}
-<img src="{{ article.thumb.url }}" class="img-fluid" alt="Responsive image"/>
-<div class="container">
-    <div class="article">
-        <h2>{{article.title}}</h2>
-        <p class="container">{{article.body}}</p>
-        <p>{{article.date}}</p>
+    <div style="max-height: 450px; overflow: hidden;">
+    <img src="{{ article.thumb.url }}" style="max-width: 100%; width: 100%;"/>
     </div>
-</div>
+    <div class="container">
+        <div class="article">
+            <h2 class="text-center">{{article.title}}</h2>
+            <p class="container">{{article.body}}</p>
+            <footer>{{article.date}}</footer>
+        </div>
+    </div>
 
 {% endblock %}

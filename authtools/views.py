@@ -299,7 +299,6 @@ class PasswordResetView(CsrfProtectMixin, FormView):
             kwargs['extra_email_context'] = self.extra_email_context
 
         form.save(**kwargs)
-
         return super(PasswordResetView, self).form_valid(form)
 
 
