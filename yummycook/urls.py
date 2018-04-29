@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^accounts/', include('authtools.urls')),
     url(r'^tutoriales/', include('tutoriales.urls')),
     url(r'^chatrooms/',include('chatdemo.urls')),
+    url(r'^registration/', include('registration.auth_urls')),
 ]
 
 if settings.DEBUG:

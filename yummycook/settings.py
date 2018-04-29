@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'celery',
     'django_celery_beat',
     'whitenoise.runserver_nostatic',
+    'registration',
 
 ]
 
