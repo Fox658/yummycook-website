@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="{% static 'media/img/Miniartx-Gifts-2-Cake.ico'%}">
 
     <title>{% block title %}Yummy's joy{% endblock title %}</title>
 
@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">YummyJoy's Bake blog</a>
+          <a class="navbar-brand" href="{% url 'home' %}">YummyJoy's Bake blog</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -57,24 +57,19 @@
           <div class="nav navbar-nav navbar-right">
             {%if  user.is_authenticated %}
                 {% if user.is_staff %}
-                    <li>
-                        <form action="{% url 'chatdemo:profile' %}" class="form-group navbar-form">
-                            <button type="submit" class="btn btn-info">Perfil</button> 
-                        </form> 
-                      </li>
-                    <li>
+                  <li> 
                       <form action="{% url 'logout'%}" method="post" class="form-group navbar-form">
                           {% csrf_token %}
                           <button type="submit" class="btn btn-info">Log Out</button> 
                       </form> 
-                    </li> 
+                    </li>   
+                   
+                    <li>
+                      <form action="#" class="form-group navbar-form">
+                            <button type="submit" class="btn btn-link btn-md"><span class="glyphicon glyphicon-cog"></span></button>
+                      </form> 
+                    </li>
                 {% else %}
-                <li>
-                    <form action="{% url 'chatdemo:profile' %}" class="form-group navbar-form">
-                        <button type="submit" class="btn btn-info">Perfil</button> 
-                    </form> 
-                  </li>
-                  <li>
                     <form class= "navbar-form navbar-right" action="{% url 'logout'%}" method="post">
                         <div class="form-group">
                             {% csrf_token %}
@@ -91,7 +86,7 @@
               </li>
               <li>
                 <div class="form-group navbar-form">
-                  <a href="{% url 'chatdemo:register' %}"><button class="btn btn-default">Sign Up</button> </a>
+                  <a href="#"><button class="btn btn-default">Sign Up</button> </a>
                 </div>
               </li>
           </div>
@@ -108,7 +103,7 @@
       <hr>
 
       <footer>
-        <p>&copy; 2018 Company, Inc.</p>
+        <p>&copy; 2018 YummyJoy, Inc.</p>
       </footer>
     </div> 
     <!-- /container -->

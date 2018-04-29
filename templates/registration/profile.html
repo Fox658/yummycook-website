@@ -16,6 +16,8 @@
                 <label for="id_username">Nombre Usuario</label>
                 <input type="text" value="{{ request.user.username }}" id="id_username" class="form-control" disabled/> 
             </div>
+            {% csrf_token %}
+            <form method="post" class="form" action="#"></form>
             <div class="form-group">
                     <label for="id_username">Nombres</label>
                     <input type="text" value="{{ request.user.first_name }}" id="id_name" class="form-control" disabled/> 
@@ -24,9 +26,7 @@
                     <label for="id_username">Apellidos</label>
                     <input type="text" value="{{ request.user.last_name }}" id="id_name" class="form-control" disabled/> 
             </div>
-            <form method="post" class="form" action="{% url 'chatdemo:profile' %}">
-            {% csrf_token %}
-
+            
                     <div class="form-group">
                         <label for="{{ form.email.id_for_label }}">Correo Electronico</label>
                         {{ form.email |attr:"placeholder:Email" |add_class:"form-control" }} 
@@ -39,9 +39,9 @@
 
 {% if user.is_authenticated %}
 <br />
-<a class="btn btn-default" href="{% url 'chatdemo:password_change' %}">Cambia la clave</a>
+<a class="btn btn-default" href="{% url 'password_change' %}">Cambia la clave</a>
 <br /><br />
-<a class="btn btn-default" href="{% url 'chatdemo:password_reset' %}">Resetea la clave</a>
+<a class="btn btn-default" href="{% url 'password_reset' %}">Resetea la clave</a>
 <br /><br />
 {% endif %}
 

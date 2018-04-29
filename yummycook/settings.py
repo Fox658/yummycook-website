@@ -161,6 +161,7 @@ CHANNEL_LAYERS = {
         "ROUTING": "chatdemo.routing.channel_routing",
     },
 }
+
 try: 
     from .local_settings import *
 except ImportError:

@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^about/$', views.about, name='about'),
     url(r'^$',views.homepage, name='home'),
     url(r'^articles/', include('articles.urls')),
-    url(r'^authtools/', include('authtools.urls')),
+    url(r'^accounts/', include('authtools.urls')),
     url(r'^tutoriales/', include('tutoriales.urls')),
     url(r'^chatrooms/',include('chatdemo.urls')),
 ]
