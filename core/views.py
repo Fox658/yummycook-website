@@ -6,7 +6,6 @@ from .forms import UserForm
 from django.forms import inlineformset_factory
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
 
 def signup(request):
