@@ -20,7 +20,7 @@ def signup(request):
             login(request,user)
             return redirect('home')
     else:
-        form =UserCreationForm()
+        form =SignUpForm()
     return render(request, 'account/signup.html', {'form':form})
 
 @login_required # only loegged in users should accses this

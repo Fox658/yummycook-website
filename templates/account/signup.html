@@ -1,28 +1,28 @@
 {% extends 'base_layout.html' %}
-
+load    
 {% block content %}
     <div class="container">
-        <div class="col s12 m8 offset-m2">
+        <div>
             <div class="card">
-                <div class="card-content">
-                    <h2>Sign up</h2>
-                    <form method="post">
-                        {% csrf_token %}
-                        {% for field in form %}
-                            <p>
+            <div class="card-content">
+                <h2>Sign up</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %} 
+                        <p> 
                             {{ field.label_tag }}<br>
                             {{ field }}
                             {% if field.help_text %}
-                                <small style="color: grey">{{ field.help_text|safe }}</small>
+                                <small style="color: grey">{{ field.help_text | safe }}</small>
                             {% endif %}
                             {% for error in field.errors %}
                                 <p style="color: red">{{ error }}</p>
-                            {% endfor %}
-                            </p>
-                        {% endfor %}
-                        <button type="submit" class="btn btn-info btn-md">Sign up</button>
-                    </form>
-                </div>
+                            {% endfor %}  
+                        </p>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-info btn-md">Sign up</button>
+                </form>
+            </div>
             </div>
         </div>
     </div>
