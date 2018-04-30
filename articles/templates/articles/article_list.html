@@ -18,26 +18,25 @@ Articles
         <br>
         <br>
         
-         <div class="container">     
-            {% for item in items %}
-                {% if forloop.counter %}
-                    <div class="row">
-                        <div class="col-md-7" style="max-height: 150px; overflow: hidden;">
-                            <a href="{% url 'articles:detail' slug=item.slug %}">
-                                <img class="img-fluid rounded mb-3 mb-md-0" src="{{ item.thumb.url }}" alt="" style="max-width: 100%; width: 100%;">
-                            </a>
-                        </div>
-                        <div class="col-md-5">
-                            <h3><b>{{item.title}}</b></h3>
-                            <p>{{item.snippet}}</p>
-                            <footer>by {{item.author.username}}, {{item.date}}</footer>
-                            <a class="btn btn-primary" href="{% url 'articles:detail' slug=item.slug %}">Ver Post</a>
-                        </div>
-                    </div>  
-                {% endif %}
-            {% endfor %}
-            {% include "paginacion.html" %}
-        </div>
+        {% for item in items %}
+            {% if forloop.counter %}
+                <div class="row">
+                    <div class="col-md-7" style="max-height: 150px; overflow: hidden;">
+                        <a href="{% url 'articles:detail' slug=item.slug %}">
+                            <img class="img-fluid rounded mb-3 mb-md-0" src="{{ item.thumb.url }}" alt="" style="max-width: 100%; width: 100%;">
+                        </a>
+                    </div>
+                    <div class="col-md-5">
+                        <h5>{{item.title}}</h5>
+                        <p>{{item.snippet}}</p>
+                        <footer>by {{item.author.username}}, {{item.date}}</footer>
+                        <a class="btn btn-primary" href="{% url 'articles:detail' slug=item.slug %}">Ver Post</a>
+                    </div>
+                </div>  
+            {% endif %}
+        {% endfor %}
+        {% include "paginacion.html" %}
+        
   
         <!-- <div class="text-center ">
         {% for item in items %}

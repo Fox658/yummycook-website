@@ -14,12 +14,12 @@
 {% for item in items %}
 {% if forloop.counter|divisibleby:2 %}
     <div class="row featurette">
-        <div class="col-md-7">
-        <h2 class="featurette-heading"><a href="{% url 'detalle_tutorial_series' item.slug %}"> {{item.nombre}} </a><span class="text-muted">{{item.leccion}} Tutoriales</span></h2>
+        <div class="col-md-7 col-md-push-5">
+        <h3 class="featurette-heading"><a href="{% url 'detalle_tutorial_series' item.slug %}">{{item.nombre}}</a><span class="text-muted">{{item.leccion}} Tutoriales</span></h3>
         <p><strong>Experiencia de estudiante: </strong>{{ item.experiencia_estudiante }}</p>
         <p class="lead">{{ item.descripcion|truncatechars:160 }}</p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 col-md-pull-7">
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe src="{{ item.tutoriales.all.0.video }}" frameborder="0" class="embed-responsive-item"></iframe>
             </div>       
@@ -27,12 +27,12 @@
     </div>
 {% else %}
     <div class="row featurette">
-        <div class="col-md-7 col-md-push-5">
-        <h2 class="featurette-heading"><a href="{% url 'detalle_tutorial_series' item.slug %}"> {{item.nombre}} </a><span class="text-muted">{{item.leccion}} Tutoriales</span></h2>
+        <div class="col-md-7 ">
+        <h3 class="featurette-heading"><a href="{% url 'detalle_tutorial_series' item.slug %}"> {{item.nombre}} </a><span class="text-muted">{{item.leccion}} Tutoriales</span></h3>
         <p><strong>Experiencia de estudiante: </strong>{{ item.experiencia_estudiante }}</p>
         <p class="lead">{{ item.descripcion|truncatechars:160 }}</p>
         </div>
-        <div class="col-md-5 col-md-pull-7">
+        <div class="col-md-5 ">
             <div class="embed-responsive embed-responsive-16by9">
                     <iframe src="{{ item.tutoriales.all.0.video }}" frameborder="0" class="embed-responsive-item"></iframe>
             </div>        

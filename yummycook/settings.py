@@ -152,7 +152,6 @@ POSTMARK = {
     'TOKEN': 'dfb%$^h2_&oue@3w-p60bq3fvxku7@3w3cj&gmsv(1#9r-=1dk',
     'TEST_MODE': False,
 }
-
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgi_redis.RedisChannelLayer",

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
@@ -16,10 +16,11 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="{% static 'css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
-    <link href="{% static 'css/col-portfolio.css' %}" rel="stylesheet">
+   
     <!-- Custom styles for this template -->
     <link href="{% static 'css/jumbotron.css' %}" rel="stylesheet">
-  
+    <link href="{% static 'css/col-portfolio.css' %}" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.min.css'%}"  media="screen,projection"/>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -34,7 +35,7 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="height: 50px;" >
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -66,13 +67,13 @@
                     </li>   
                     <li>
                       <form action="#" class="form-group navbar-form">
-                            <button type="submit" class="btn btn-link btn-md"><span class="glyphicon glyphicon-cog"></span></button>
+                            <button type="submit" class="btn btn-link btn-md"><span class="glyphicon glyphicon-cog" style="color:aliceblue"></span></button>
                       </form> 
                     </li>
                 {% else %}
                 </li>   
                   <li>
-                    <form action="#" class="form-group navbar-form">
+                    <form action="{% url 'core:account_update' %}" class="form-group navbar-form">
                       <button type="submit" class="btn btn-info btn-md">Perfil</button>
                     </form> 
                   </li>
@@ -92,16 +93,16 @@
               </li>
               <li>
                 <div class="form-group navbar-form">
-                  <a href="#"><button class="btn btn-default">Sign Up</button> </a>
+                  <a href="{% url 'core:signup'%}"><button class="btn btn-default">Sign Up</button> </a>
                 </div>
               </li>
+            {% endif %}
           </div>
-          {% endif %}
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-    <div class="jumbotron" style="padding: 0%;" >
+    <div class="jumbotron" style="padding: 0; margin:-5.5px 0 0 0;">
     {% block content %} 
 
     {% endblock %}
@@ -118,7 +119,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{% static 'js/jquery.min.js' %}"></script>
-      <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'materialize/js/materialize.min.js'%}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
     {% block extra_scripts %}{% endblock %}

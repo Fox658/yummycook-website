@@ -24,7 +24,6 @@
             
             <div class="col-xs-9 col-sm-8 text-left pre-scrollable" id="all_messages">
                 <div class="hidden" id="last_message_id">{{ first_message_id }}</div> 
-                {% if user.is_staff %}
                     {% if first_message_id > 0 %}
                         <div class="text-center"><button id="load_old_messages" class="btn btn-success">Carga mensajes viejos.</button></div>
                     {% endif %}
@@ -37,9 +36,7 @@
                         {% empty %}
                         <div id="no_messages">No hay mensajes aqui.</div>
                         {% endfor %}
-                {% else %}
-                        <li class= "list-group-item">Tienes que ser aceptado por la administracion via este correo: www.yummyjoy.555@gmail.com</li>
-                {% endif %}    
+          
                 </ul>
             </div>
         </div>
@@ -49,7 +46,7 @@
         <div class="row">
             <form id="chatform" autocomplete="off">
                 <div class="col-xs-9 col-sm-7 col-sm-offset-3">
-                    {% if user.is_staff %}
+                    {% if user %}
                     <input id="message" type="text" class="form-control input-lg" placeholder="Escribe un mensaje aqui" required>
                     {% else %}
                     <input class="form-control  input-lg" id="disabledInput" type="text" placeholder="Por favor loggese al chat" disabled>
