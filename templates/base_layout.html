@@ -70,6 +70,12 @@
                       </form> 
                     </li>
                 {% else %}
+                </li>   
+                  <li>
+                    <form action="#" class="form-group navbar-form">
+                      <button type="submit" class="btn btn-info btn-md">Perfil</button>
+                    </form> 
+                  </li>
                     <form class= "navbar-form navbar-right" action="{% url 'logout'%}" method="post">
                         <div class="form-group">
                             {% csrf_token %}
