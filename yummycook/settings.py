@@ -33,7 +33,7 @@ DEBUG = False
 INSTALLED_APPS = [
     'chatdemo.apps.ChatdemoConfig',
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth',    
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -157,6 +157,7 @@ CHANNEL_LAYERS = {
         "BACKEND": "asgi_redis.RedisChannelLayer",
         "CONFIG": {
             "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+            # "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:8085')],
         },
         "ROUTING": "chatdemo.routing.channel_routing",
     },
