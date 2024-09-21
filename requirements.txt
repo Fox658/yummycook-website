@@ -5,7 +5,7 @@ asgiref==1.1.2
 asn1crypto==0.24.0
 astroid==1.6.1
 async-timeout==2.0.1
-attrs==17.2.0
+attrs==19.3.0
 autobahn==17.6.1
 Automat==0.6.0
 billiard==3.5.0.2
@@ -28,6 +28,7 @@ django-channels-presence==0.0.7
 django-environ==0.4.4
 django-postmark==0.1.6
 django-widget-tweaks==1.4.1
+django-authtools==1.7.0
 gunicorn==19.7.1
 h2==3.0.1
 hiredis==0.2.0
