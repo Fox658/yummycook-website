@@ -20,10 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dfb%$^h2_&oue@3w-p60bq3fvxku7@3w3cj&gmsv(1#9r-=1dk'
+SECRET_KEY = 'dfb%$^h2_&oue@3w-p60bq3fvxku7@3w3cj&gmsv(1#9r-=1d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #False
+DEBUG = True
+
+
+
 
 # Application definition
 
@@ -83,7 +86,7 @@ WSGI_APPLICATION = 'yummycook.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:/db.sqlite3')
+    'default': dj_database_url.config()
 }
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
@@ -126,7 +129,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-ALLOWED_HOSTS = ['127.0.0.1','localhost','fast-citadel-12918.herokuapp.com']
+# ALLOWED_HOSTS = ['fast-citadel-12918.herokuapp.com']
 
 STATIC_URL = '/static/'
 
@@ -153,22 +156,12 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgi_redis.RedisChannelLayer",
         "CONFIG": {
-            # "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
-            "hosts": [('localhost',6379)],
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+            # "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:8085')],
         },
         "ROUTING": "chatdemo.routing.channel_routing",
     },
 }
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels.layers.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [('localhost', 6379)],
-#             # "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:8085')],
-#         },
-#         "ROUTING": "chatdemo.routing.channel_routing",
-#     },
-# }
 try: 
     from .local_settings import *
 except ImportError:

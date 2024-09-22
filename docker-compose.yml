@@ -1,0 +1,8 @@
+services:
+  web: 
+    build: . # current directory
+    command: daphne yummycook.asgi:channel_layer && python manage.py runserver
+    volumes:
+      - .:/code
+    ports: 
+      - '8000:8000'
